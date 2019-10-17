@@ -3,7 +3,7 @@ import sys
 #print(len(sys.argv))
 ipaddress = '88.200.125.216'
 port = 3002
-text = b'\2PP\3'
+text = b'\2\3'
 #text = text.encode()
 res = ''
 for x in sys.argv:
@@ -21,8 +21,13 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # Connect the socket to the port where the server is listening
 server_address = ('88.200.125.216', 3002)
 #print('connecting to %s port %s' % server_address)
-sock.connect(server_address)
-sock.settimeout(2)
+try:
+	sock.settimeout(2)
+	sock.connect(server_address)
+	
+except Exception as e:
+		print("error opening ethernet port: ", str(e))
+		exit()
 try:    
     # Send data
 	#message = text
