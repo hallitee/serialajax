@@ -15,6 +15,14 @@
 	<div class="row">
 	<div class="col-md-8">
    <form class="form-group" method="post" id="htmlform">
+      	<div class="form-group row">
+		<label class="col-md-6 form-label">Indicator: </label>
+		<select name="machine" id="machine" class="form-control col-md-6">
+		<option value="AVERY">AVERY</option>
+		<option value="BILANCIAI">BILANCIAI</option>
+		<option value="METTLER">METTLER TOLEDO</option>
+		</select>
+	</div>
    	<div class="form-group row">
 		<label class="col-md-6 form-label">Communication Channel: </label>
 		<select name="channel" id="port" class="form-control col-md-6">

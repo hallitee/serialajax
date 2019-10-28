@@ -1,3 +1,4 @@
+#https://stackoverflow.com/questions/56844170/how-to-read-serial-port-with-php
 import sys, serial, io, time
 def getser():
 	#print(len(sys.argv))
@@ -13,11 +14,11 @@ def getser():
 			port = str(x)
 		elif(sys.argv.index(x)==3):
 			#print(type(x))
-			text = bytes('\x02'+x+'\x03', 'utf-8')
+			text = bytes('\2'+x+'\3')
 				
 	#print str(baud)+ ' '+port+' '+text
 	ser = serial.Serial()
-	ser.timeout = 1
+	ser.timeout = 3
 	ser.baudrate = baud
 	ser.port = port
 	ser.open()
@@ -25,8 +26,8 @@ def getser():
 		ser.write_timeout=1
 		ser.write(text)
 		ser.flush()
-		time.sleep(0.01)
-	res = ser.readline()
+		time.sleep(1)
+	res = ser.read(100)
 	#print(type(text))
 	#print(text)
 	print(str(res))

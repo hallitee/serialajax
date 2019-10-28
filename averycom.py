@@ -20,7 +20,12 @@ def getser():
 	ser.timeout = 1
 	ser.baudrate = baud
 	ser.port = port
-	ser.open()
+	try: 
+		ser.open()
+	except Exception as e:
+		print("error open serial port: ", str(e))
+		exit()
+	#ser.open()
 	if(text!=''):
 		ser.write_timeout=1
 		ser.write(text)
